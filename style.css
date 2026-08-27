@@ -827,16 +827,18 @@ h2 {
 
 /* ---------- 9. PROCESS ---------- */
 .process {
-  background: var(--paper-alt);
+  background:
+    radial-gradient(60% 55% at 50% 0%, color-mix(in lch, var(--brand-tint) 70%, transparent) 0%, transparent 70%),
+    var(--paper-alt);
 }
 
 .process h2 {
-  margin-bottom: 44px;
+  margin-bottom: 48px;
 }
 
 .process-grid {
   display: flex;
-  align-items: flex-start;
+  align-items: stretch;
   justify-content: center;
   gap: 0;
   flex-wrap: wrap;
@@ -844,52 +846,91 @@ h2 {
 
 .process-step {
   flex: 1 1 220px;
-  max-width: 260px;
+  max-width: 268px;
   text-align: center;
   background: var(--card);
   border: 1px solid var(--line-soft);
-  border-radius: var(--radius-md);
-  padding: 30px 22px;
+  border-radius: var(--radius-lg);
+  padding: 40px 24px 30px;
   position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  box-shadow: 0 1px 2px rgba(30, 20, 10, .04);
+  transition: transform .28s var(--ease), box-shadow .28s var(--ease), border-color .28s var(--ease);
+}
+
+/* accent bar that grows on hover */
+.process-step::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 4px;
+  background: var(--gradient-primary);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .35s var(--ease);
+}
+
+.process-step:hover {
+  transform: translateY(-6px);
+  border-color: color-mix(in lch, var(--brand) 35%, var(--line-soft));
+  box-shadow: 0 22px 44px -22px rgba(30, 20, 10, .3);
+}
+
+.process-step:hover::before {
+  transform: scaleX(1);
 }
 
 .process-num {
   position: absolute;
-  top: 16px;
-  right: 18px;
+  top: 8px;
+  right: 16px;
   font-family: var(--font-display);
   font-weight: 800;
-  font-size: .78rem;
-  color: var(--line);
+  font-size: 2.6rem;
+  line-height: 1;
+  color: color-mix(in lch, var(--clay) 22%, transparent);
+  pointer-events: none;
+  transition: color .28s var(--ease);
+}
+
+.process-step:hover .process-num {
+  color: color-mix(in lch, var(--clay) 34%, transparent);
 }
 
 .process-icon {
-  width: 56px;
-  height: 56px;
-  border-radius: 16px;
+  width: 64px;
+  height: 64px;
+  border-radius: 18px;
   margin-inline: auto;
-  margin-bottom: 18px;
+  margin-bottom: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--brand-tint);
-  color: var(--brand-dark);
+  background: var(--gradient-primary);
+  color: #fff;
+  box-shadow: 0 10px 20px -8px color-mix(in lch, var(--clay) 55%, transparent);
+  transition: transform .28s var(--ease);
+}
+
+.process-step:hover .process-icon {
+  transform: translateY(-2px) rotate(-4deg);
 }
 
 .process-step h3 {
-  font-size: 1rem;
+  font-size: 1.05rem;
   margin-bottom: 8px;
 }
 
 .process-step p {
-  font-size: .88rem;
+  font-size: .9rem;
   color: var(--ink-soft);
 }
 
 .process-connector {
-  color: var(--line);
+  color: color-mix(in lch, var(--brand) 45%, var(--line));
   align-self: center;
-  margin-top: 44px;
+  margin-top: 0;
   flex-shrink: 0;
 }
 
@@ -1342,14 +1383,52 @@ h2 {
   .process-grid {
     flex-direction: column;
     align-items: stretch;
+    gap: 0;
+    max-width: 440px;
+    margin-inline: auto;
   }
 
   .process-step {
     max-width: 100%;
   }
 
+  /* keep the accent bar always visible on mobile */
+  .process-step::before {
+    transform: scaleX(1);
+    height: 3px;
+  }
+
   .process-connector {
-    display: none;
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    margin: 0;
+    padding-block: 16px;
+    position: relative;
+  }
+
+  /* vertical step line running through the connector */
+  .process-connector::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 2px;
+    transform: translateX(-50%);
+    background: repeating-linear-gradient(color-mix(in lch, var(--brand) 40%, var(--line)) 0 6px, transparent 6px 12px);
+  }
+
+  .process-connector svg {
+    position: relative;
+    width: 46px;
+    height: auto;
+    padding: 7px 10px;
+    border-radius: 999px;
+    transform: rotate(90deg);
+    background: var(--card);
+    border: 1px solid var(--line-soft);
+    box-shadow: 0 4px 10px -4px rgba(30, 20, 10, .18);
   }
 
   .footer-top {
