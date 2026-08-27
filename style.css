@@ -1082,7 +1082,7 @@ main[id] {
 
 .footer-top {
   display: grid;
-  grid-template-columns: 1fr 1.5fr;
+  grid-template-columns: 1.2fr 1fr 1.4fr;
   gap: 44px;
   padding-bottom: 40px;
   border-bottom: 1px solid rgba(255, 255, 255, .12);
@@ -1124,6 +1124,22 @@ main[id] {
   text-transform: uppercase;
   color: color-mix(in lch, white 55%, var(--ink));
   margin-bottom: 18px;
+}
+
+.footer-nav ul {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.footer-nav a {
+  font-size: .92rem;
+  color: color-mix(in lch, white 78%, var(--ink));
+  transition: color .18s;
+}
+
+.footer-nav a:hover {
+  color: var(--gold);
 }
 
 .footer-contact address {
@@ -1240,7 +1256,11 @@ main[id] {
 /* ---------- 15. RESPONSIVE ---------- */
 @media(max-width:1080px) {
   .footer-top {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .footer-brand {
+    grid-column: 1/-1;
   }
 }
 
