@@ -1358,6 +1358,54 @@ h2 {
   }
 }
 
+@media(max-width:600px) {
+  /* roomier gutters + calmer type so mobile doesn't feel cramped */
+  .container {
+    padding-inline: 22px;
+  }
+
+  h1,
+  h2,
+  h3 {
+    line-height: 1.22;
+    letter-spacing: -.005em;
+  }
+
+  .hero-copy h1 {
+    font-size: clamp(1.7rem, 8vw, 2rem);
+  }
+
+  h2 {
+    font-size: clamp(1.4rem, 6vw, 1.7rem);
+  }
+
+  .value-copy h2,
+  .section-head h2 {
+    font-size: clamp(1.35rem, 5.6vw, 1.6rem);
+  }
+
+  .lead {
+    font-size: .98rem;
+    line-height: 1.6;
+  }
+
+  .hero-sub {
+    font-size: 1rem;
+  }
+
+  .check-list h3 {
+    font-size: .95rem;
+  }
+
+  .check-list p {
+    font-size: .95rem;
+  }
+
+  .eyebrow {
+    font-size: .76rem;
+  }
+}
+
 @media(max-width:520px) {
   .header-inner {
     height: 66px;
