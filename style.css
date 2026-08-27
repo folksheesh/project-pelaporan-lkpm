@@ -304,8 +304,19 @@ h2 {
   color: var(--ink);
 }
 
-.main-nav a:hover::after {
+.main-nav a:hover::after,
+.main-nav a.is-active::after {
   width: 100%;
+}
+
+.main-nav a.is-active {
+  color: var(--ink);
+}
+
+/* offset for sticky header when jumping to a section */
+section[id],
+main[id] {
+  scroll-margin-top: 96px;
 }
 
 .i-chevron {
@@ -539,7 +550,12 @@ h2 {
 }
 
 .problem-media img {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: top center;
   border-radius: var(--radius-lg);
+  background: var(--paper-alt);
 }
 
 .problem-badge {

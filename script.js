@@ -73,6 +73,26 @@
   document.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 
+  /* ---------- 3b. SCROLLSPY: highlight nav link of section in view ---------- */
+  var navLinks = Array.prototype.slice.call(document.querySelectorAll('.main-nav a[href^="#"]'));
+  var spySections = navLinks
+    .map(function (link) { return document.getElementById(link.getAttribute('href').slice(1)); })
+    .filter(Boolean);
+
+  if (navLinks.length && spySections.length && 'IntersectionObserver' in window) {
+    var setActive = function (id) {
+      navLinks.forEach(function (link) {
+        link.classList.toggle('is-active', link.getAttribute('href') === '#' + id);
+      });
+    };
+    var spyObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) setActive(entry.target.id);
+      });
+    }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
+    spySections.forEach(function (sec) { spyObserver.observe(sec); });
+  }
+
   /* ---------- 4. GROUPED SCROLL-REVEAL ----------
      Reveal elements grouped by their nearest [data-reveal-group]
      ancestor so siblings inside the same row/grid always animate
