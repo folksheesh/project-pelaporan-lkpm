@@ -11,7 +11,7 @@
 
   function closeNav() {
     header.classList.remove('nav-open');
-    navToggle.setAttribute('aria-expanded', 'false');
+    if (navToggle) navToggle.setAttribute('aria-expanded', 'false');
     document.querySelectorAll('.has-dropdown.is-open').forEach(function (li) {
       li.classList.remove('is-open');
     });
