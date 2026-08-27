@@ -68,6 +68,7 @@ body {
 
 img {
   max-width: 100%;
+  height: auto;
   display: block;
 }
 
@@ -584,7 +585,12 @@ h2 {
   margin-top: 8px;
 }
 
+.value-media {
+  margin-left: clamp(-80px, -5vw, 0px);
+}
+
 .value-media img {
+  width: 100%;
   border-radius: var(--radius-lg);
   position: sticky;
   top: 100px;
@@ -673,15 +679,16 @@ h2 {
 
 .save-badge {
   position: absolute;
-  top: -14px;
-  right: 26px;
+  top: -16px;
+  left: 50%;
+  transform: translateX(-50%);
   background: var(--gradient-primary);
   color: #fff;
   font-family: var(--font-display);
   font-weight: 800;
-  font-size: .76rem;
+  font-size: .95rem;
   letter-spacing: .03em;
-  padding: 7px 16px;
+  padding: 8px 20px;
   border-radius: 999px;
   box-shadow: 0 8px 18px -6px rgba(211, 80, 27, .5);
 }
@@ -689,7 +696,6 @@ h2 {
 .pricing-card-top h3 {
   font-size: 1.12rem;
   margin-bottom: 14px;
-  padding-right: 70px;
 }
 
 .price-row {
@@ -1060,7 +1066,7 @@ h2 {
 
 .footer-top {
   display: grid;
-  grid-template-columns: 1.2fr 1fr 1.4fr;
+  grid-template-columns: 1fr 1.5fr;
   gap: 44px;
   padding-bottom: 40px;
   border-bottom: 1px solid rgba(255, 255, 255, .12);
@@ -1102,22 +1108,6 @@ h2 {
   text-transform: uppercase;
   color: color-mix(in lch, white 55%, var(--ink));
   margin-bottom: 18px;
-}
-
-.footer-nav ul {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.footer-nav a {
-  font-size: .92rem;
-  color: color-mix(in lch, white 78%, var(--ink));
-  transition: color .18s;
-}
-
-.footer-nav a:hover {
-  color: var(--gold);
 }
 
 .footer-contact address {
@@ -1234,11 +1224,7 @@ h2 {
 /* ---------- 15. RESPONSIVE ---------- */
 @media(max-width:1080px) {
   .footer-top {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .footer-brand {
-    grid-column: 1/-1;
+    grid-template-columns: 1fr;
   }
 }
 
@@ -1512,13 +1498,8 @@ h2 {
   }
 
   .save-badge {
-    right: 16px;
-    font-size: .7rem;
-    padding: 6px 12px;
-  }
-
-  .pricing-card-top h3 {
-    padding-right: 0;
+    font-size: .85rem;
+    padding: 7px 16px;
   }
 
   .pricing-card-divider::before,
