@@ -539,7 +539,6 @@ h2 {
 
 .problem-media img {
   border-radius: var(--radius-lg);
-  border: 1px solid var(--line-soft);
 }
 
 .problem-badge {
@@ -587,7 +586,6 @@ h2 {
 
 .value-media img {
   border-radius: var(--radius-lg);
-  border: 1px solid var(--line-soft);
   position: sticky;
   top: 100px;
 }
@@ -1302,12 +1300,22 @@ h2 {
   }
 
   .value-media {
-    max-width: 420px;
+    max-width: 460px;
     margin-inline: auto;
+    background: var(--paper);
+    border: 1px solid var(--line-soft);
+    border-radius: var(--radius-lg);
+    padding: clamp(16px, 5vw, 28px);
+    box-shadow: 0 18px 40px -24px rgba(0, 0, 0, .35);
   }
 
   .value-media img {
     position: static;
+    display: block;
+    width: 100%;
+    height: auto;
+    border: 0;
+    border-radius: 0;
   }
 
   .testimonial-grid {
